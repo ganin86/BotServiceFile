@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram bot 'Proxy checker'
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/bot 
+ExecStart=/opt/bot/ProxyCheckerBot
+RestartSec=10
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
