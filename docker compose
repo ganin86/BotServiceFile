@@ -12,8 +12,8 @@ After=docker.service
 Type=oneshot
 WorkingDirectory=/opt/ha
 Environment=COMPOSE_HTTP_TIMEOUT=600
-ExecStart=/usr/bin/env /usr/bin/docker-compose -f /opt/ha/compose.yml up -d
-ExecStop=/usr/bin/env /usr/bin/docker-compose -f /opt/ha/compose.yml stop
+ExecStart=/usr/bin/env /usr/bin/docker-compose -f /opt/ha/docker-compose.yml up -d
+ExecStop=/usr/bin/env /usr/bin/docker-compose -f /opt/ha/docker-compose.yml stop
 StandardOutput=syslog
 RemainAfterExit=yes
 
