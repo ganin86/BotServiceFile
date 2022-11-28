@@ -1,2 +1,2 @@
-# BotServiceFile
-/lib/systemd/system/bot-proxychecker.service
+# My service files
+/lib/systemd/system/%service name%.service
