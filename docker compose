@@ -1,0 +1,21 @@
+vim /etc/systemd/system/myapp.service
+systemctl enable myapp
+systemctl start myapp
+
+
+[Unit]
+Description=Service for myapp
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/bootvar
+Environment=COMPOSE_HTTP_TIMEOUT=600
+ExecStart=/usr/bin/env /usr/bin/docker-compose -f /opt/ha/compose.yml up -d
+ExecStop=/usr/bin/env /usr/bin/docker-compose -f /opt/ha/compose.yml stop
+StandardOutput=syslog
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
