@@ -1,0 +1,16 @@
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.82.tar.xz
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.82.tar.sign
+apt-get install gpg
+tar xvf linux-5.15.82.tar.xz
+gpg --verify -vvvv linux-5.15.82.tar.sign
+cd linux-5.15.82/
+cp -v /boot/config-$(uname -r) .config
+apt install build-essential dwarves python3 libncurses-dev flex bison libssl-dev bc libelf-dev\
+make menuconfig 
+make localmodconfig
+make bzImage
+make modules
+make modules_install
+make install
+update-grub
+reboot -i
