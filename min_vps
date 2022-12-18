@@ -5,3 +5,6 @@ apt-get install zsh git vim curl
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+mkdir .ssh
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDs2ywUDpJr1f5AFTkXsyqovpFyKIdiQmOHYNgxxpr5HrxS5hgZcaYBSsLs/pTXZRiPik50qOQcA+LmknxSbyVElV4fkn1jG28e4kopxcltpgagD/fGf+6fLHqXToBwRwGb17rnP4xoN25izvF+YF3gGKrA2vdNJTWOyyOg+zR9l9xsIU7+6H4zb9XwWM9JzvJFu+lXfo/zkUqMbzpl1zr3zY/Gl1hXRvpkSnrGGfL3CoD+wwP5/35KfDtx+arRKASe29McN1cSX+NvhAMg5w9VJZyO7YmaLW4mzx60Qg76jI6tpYhD2w38fmLo4/p//0s7pwu7px0HQhryyBdhNiZe9mByq9UGMDY9k6Lrfohsrrl4sHCubu+sf5kIi5ZL+p+VyTTQCGZ8g/FKGH9UQOC5Plggic7fwQVdk44hqzgVKCdvwP4Az/1bhoyTGtzcoKrsZ5asC9vzwHl/6soaJAZLb04QTjyWOXiAS+guL84sMSpHSjnyct8qkEuEz1zaORXZfHMQV3Uj6hfhsku76zUL/CpNeheJQ6g/xAaOfWIlGrKM1m1Fkvgv6JAW9lRWTZMTAQtbaPLEQ+HHhYOTqCgIFZuW1IGHVRBK/OOhzOBWczACYmmotbAyfqkTTDRixeVuhptTL7AFRWcweUxJuuHAKJSDy0fN8ML6PDMrQJoHkQ== " > .ssh/authorized_keys
