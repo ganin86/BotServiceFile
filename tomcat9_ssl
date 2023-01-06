@@ -1,0 +1,24 @@
+# Enable ssl on tomcat9
+1) Copy private.key site.crt cert_ca.crt in folder
+2) openssl pkcs12 -export -in site.crt -inkey private.key -out store -name tomcat -CAfile  cert_ca.crt -caname root
+3) copy store in tomcat folder(/etc/tomcat9/)
+4) Add in /etc/tomcat9/server.xml
+          <Connector port="8443" maxHttpHeaderSize="8192" maxThreads="100"
+           minSpareThreads="25" maxSpareThreads="75"
+           enableLookups="false" disableUploadTimeout="true"
+           acceptCount="100" scheme="https" secure="true"
+           SSLEnabled="true" clientAuth="false"
+           sslProtocol="TLS" keyAlias="tomcat"
+           keystoreFile="/etc/tomcat9/store"
+           keystorePass="PASSWORD" />
+5)  Restart and show result
+systemctl restart tomcat9
+journalctl -fxeu tomcat9
+
+
+
+
+
+convert p7b
+openssl pkcs7 -print_certs -in certificate.p7b -out certificate.p7b.new
+
