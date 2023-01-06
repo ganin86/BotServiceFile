@@ -1,0 +1,72 @@
+Testing debian 11
+
+full info https://www.seafile.com/en/download/#server
+
+
+install dependency
+    apt-get install -y python3 python3-setuptools python3-pip memcached libmemcached-dev pwgen sqlite3
+    pip3 install --timeout=3600 django==2.2.* future Pillow pylibmc captcha jinja2 psd-tools django-pylibmc django-simple-captcha pycryptodome==3.12.0 cffi==1.14.0
+
+
+cd /opt
+mkdir seafile
+cd seafile
+wget https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-server_9.0.9_x86-64.tar.gz
+ tar -xzf seafile-server_9.0.9_x86-64.tar.gz
+cd seafile-server-9.0.9
+./setup-seafile.sh
+
+echo "export LC_ALL=en_US.UTF-8" >>~/.bashrc
+echo "export LANG=en_US.UTF-8" >>~/.bashrc
+echo "export LANGUAGE=en_US.UTF-8" >>~/.bashrc
+source ~/.bashrc
+
+
+Manual start
+./seafile.sh start
+./seahub.sh start
+
+Check open ports after start(default 8000)
+netstat -tupnl
+
+
+vim /etc/systemd/system/seafile.service
+===================================
+[Unit]
+Description=Seafile
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/seafile/seafile-server-latest/seafile.sh start
+ExecStop=/opt/seafile/seafile-server-latest/seafile.sh stop
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+===================================
+
+vim /etc/systemd/system/seahub.service
+===================================
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Description=Seafile hub
+After=network.target seafile.service
+
+[Service]
+Type=forking
+ExecStart=/opt/seafile/seafile-server-latest/seahub.sh start
+ExecStop=/opt/seafile/seafile-server-latest/seahub.sh stop
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+===================================
+
+systemctl daemon-reload
+systemctl start seafile && sudo systemctl enable seafile
+systemctl start seahub && sudo systemctl enable seahub
