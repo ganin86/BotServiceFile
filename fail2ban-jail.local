@@ -1,0 +1,9 @@
+[sshd]
+enabled = true
+findtime    = 3600
+maxretry    = 6
+bantime     = 86400
+[nginx-http-auth]
+enabled = true
+[nginx-limit-req]
+enabled = true
