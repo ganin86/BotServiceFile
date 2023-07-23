@@ -1,0 +1,16 @@
+apt-get install xfce4 xfce4-goodies xorg dbus-x11 x11-xserver-utils tigervnc-standalone-server tigervnc-common
+adduser vnc
+gpasswd -a vnc sudo
+echo "@reboot vnc vncserver :7 -localhost yes" >> cat /etc/crontab 
+echo "net.ipv6.conf.all.disable_ipv6=1" > /etc/sysctl.d/90-disable-ipv6.conf
+apt install htop atop iotop iftop
+grep -o aes /proc/cpuinfo
+mkdir /home/vnc/.ssh
+cp .ssh/authorized_keys /home/vnc/.ssh/
+chown -R vnc:vnc /home/vnc/.ssh/
+apt install qemu qemu-kvm libvirt-daemon libvirt-clients bridge-utils virt-manager
+gpasswd -a vnc libvirt
+systemctl status libvirtd
+apt install firefox-esr
+apt autoremove
+wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
