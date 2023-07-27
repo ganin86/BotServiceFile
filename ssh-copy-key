@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $1 ]];then
+    for var in $(grep "^Host" ~/.ssh/config | awk '$1 == "Host" { print $2 }')
+    do
+        ssh-copy-id -i $1 $var
+    done
+fi
