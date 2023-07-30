@@ -1,0 +1,25 @@
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get upgrade -y
+apt-get install zsh git vim curl -y
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+chsh -s $(which zsh)
+
+mkdir .ssh
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQC12SFLsnTHHqORYB8vSEVbVBcXH3Thg2e/xTlYeUJeZlPcF2rL1qH0wbzsvWMRe9b5Uvk4iG0ViNXVokB7BS8QEO2K2vDt45rRtDplZuK6IfE5/Hsw22MKeIfT+QbdhpIuZQCF5gpM/WXDufmVskTtj4hy50ELvI/Hd1kkdIF+OkNNQJ8OoHkaczb51FH8JG+r+JAPFSw+D72grH2sn1kTXp/hYkQSIHv0Fr62P+q2D7Mx2r8Tc4UoXpvCOVi6AYbLqSYbeeTNh7nDEld7B3MQO2nF6Zuycn2Q+WoX/HSfbxumVAcNhOZXZpsAuMMxORaArGhU2rpIdudGxkNOr1W0NOrHlAJl09QKXh26vgjrBPnMPZTj9N4Enhhi36sXRFWEnhxjWtCSwJnVcJDWVpFh1usHulCP82bX7i9jOGoXgcPwiNa5l8BlXyKvaHgw7xddgUvnDF0/3JVIEzl09BxVDvAGvo3ED6+4TF2XlKhKdhQslPmJerSxsJD6s6g1i46YrVg3f3KI2fxfBYwnOjlFAxI3OUMqY2j526lQjkYmsUKTCL4vGlFILM+vDVPczW4H2xnqBq9Fm+TVOcQr5Mw4eSdy0Khj2sGrNoMm40/Hnj+KYiNAWor/kj9TSbemzlNqe/FnfZ/h70Ms7BIsoJEy/snCs48f0kQsmz1TvoPPlPrDExH2SliWGpYL23NOZdQDjFa1PD1J8dqj1Bs5vTRC493ooM75ODUbUbUXRpGYWMcKJWQXCXcapSucC/fHHhRTY5C1CRp7gYfjp3DuG+ioDzVX4RQa7D/LubHA/MJYo2UiFl8LdORNJxHILBFM2SMAddRj0W2YjhZRLz1+Y/6zREvsLOakkzkXRYDu46HD96PaclCW4GkO7/dGABnGSfDmhG/qLmcVzn6hlbZmS+fUgJwqMlLdaCrO1zrKmp8dTunfFZl5NGAv5uUz67cjaUgaS94m4dWsuytnI+Dj3lZfcxf3lVxwzLTh973ubLaIsWmbI9XyfgMc/Hsmel85se7DfLeujt0Ylzwm11pUo5D9LwwhgZ6JF62OjDojavm5EQVQ7/yPkPPI2LBoiYjy6C84Z+fsEFRJze8IXU1dy5qy5pzW1I+nI3MAJ2OohgfhVU4XMC+8HpaFsrNQpOApPnsw1Q4eaRNXpeiTRJVl3ZJO3NnIIrvVNCY4Eqo93eIcYs/iFDMyefuF7O+zJOaLu5/4KB/bAhgX5s/tIfn9SUK/Mc7EO4uwSPuw+03MoCiw1NRH9JFEta0gwF1S2G9ZeBbhppv15TUdReiGk3akX2t793ioZs2ZMhc8dt+vVg+1CVQ4ZIbjmERSdqJ78+XK4F7JGa+LRX1mWkKSRr8HUPTv mobile
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDs2ywUDpJr1f5AFTkXsyqovpFyKIdiQmOHYNgxxpr5HrxS5hgZcaYBSsLs/pTXZRiPik50qOQcA+LmknxSbyVElV4fkn1jG28e4kopxcltpgagD/fGf+6fLHqXToBwRwGb17rnP4xoN25izvF+YF3gGKrA2vdNJTWOyyOg+zR9l9xsIU7+6H4zb9XwWM9JzvJFu+lXfo/zkUqMbzpl1zr3zY/Gl1hXRvpkSnrGGfL3CoD+wwP5/35KfDtx+arRKASe29McN1cSX+NvhAMg5w9VJZyO7YmaLW4mzx60Qg76jI6tpYhD2w38fmLo4/p//0s7pwu7px0HQhryyBdhNiZe9mByq9UGMDY9k6Lrfohsrrl4sHCubu+sf5kIi5ZL+p+VyTTQCGZ8g/FKGH9UQOC5Plggic7fwQVdk44hqzgVKCdvwP4Az/1bhoyTGtzcoKrsZ5asC9vzwHl/6soaJAZLb04QTjyWOXiAS+guL84sMSpHSjnyct8qkEuEz1zaORXZfHMQV3Uj6hfhsku76zUL/CpNeheJQ6g/xAaOfWIlGrKM1m1Fkvgv6JAW9lRWTZMTAQtbaPLEQ+HHhYOTqCgIFZuW1IGHVRBK/OOhzOBWczACYmmotbAyfqkTTDRixeVuhptTL7AFRWcweUxJuuHAKJSDy0fN8ML6PDMrQJoHkQ== alex@alexpc " >> .ssh/authorized_keys
+
+apt-get install ca-certificates curl gnupg
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  
