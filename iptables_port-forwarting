@@ -1,0 +1,14 @@
+ip1
+net.ipv4.ip_forward=1
+iptables -t nat -A PREROUTING -p tcp --dport 777 -j DNAT --to-destination ip2:777
+iptables -t nat -A PREROUTING -p udp --dport 777 -j DNAT --to-destination ip2:777
+iptables -t nat -A POSTROUTING -j MASQUERADE
+ip2
+net.ipv4.ip_forward=1
+iptables -t nat -A PREROUTING -p tcp -s ip1 --dport 777 -j DNAT --to-destination ip3:777
+iptables -t nat -A PREROUTING -p udp -s ip1 --dport 777 -j DNAT --to-destination ip3:777
+iptables -t nat -A POSTROUTING -j MASQUERADE
+ip3
+
+
+
